@@ -1,0 +1,48 @@
+import { footerLogo } from '../assets/images'
+import { copyrightSign } from '../assets/icons'
+import { socialMedia,footerLinks } from '../constants'
+
+const Footer = () => {
+  return (
+    <footer className='max-container'>
+      <div className='flex justify-between items-start gap-20 flex-wrap max-lg:flex-col'>
+        <div className='flex flex-col items-start'>
+          <a href="/">
+            <img src={footerLogo} alt="" width={150} height={46} />
+          </a>
+          <p className='mt-6 text-base leading-7 font-montserrat text-white-400 sm:max-w-sm'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quos suscipit quod.</p>
+          <div className='flex items-center gap-5 mt-8'>
+            {socialMedia.map((icon, index) => (
+              <div key={index} className='flex justify-center items-center w-12 h-12 bg-white rounded-full'>
+                <img src={icon.src} alt={icon.alt} width={24} height={24} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className='flex flex-1 justify-between lg:gap-10 gap-20 flex-wrap'>
+          {footerLinks.map((group, index) => (
+            <div key={index} className='flex flex-col gap-5'>
+              <h4 className='text-white font-montserrat text-2xl leading-normal font-medium mb-6'>{group.title}</h4>
+              {group.links.map((link, index) => (
+                <li key={index} className='mt-1 text-white-400 font-montserrat text-base leading-normal hover:text-slate-gray cursor-pointer list-none'>
+                  <a href={link.link}>{link.name}</a>
+                </li>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className='flex justify-between text-white-400 mt-24 max-sm:flex-col max-sm:items-center'>
+          <div className='flex flex-1 justify-start items-center gap-2 font-montserrat cursor-pointer'>
+            <img src={copyrightSign} alt="copyright" width={20} height={20} className='rounded-full m-0'/>
+            <p>Copyright. All rights reserved.</p>
+          </div>
+          <p className='font-montserrat cursor-pointer'>Terms and Conditions</p>
+      </div>
+    </footer>
+  )
+}
+
+export default Footer
